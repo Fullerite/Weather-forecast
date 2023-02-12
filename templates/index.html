@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Weather forecast</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index-default.css') }}" media="screen">
+    <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='js/index.min.js') }}" defer=""></script>
+    <meta name="generator" content="Nicepage 5.2.4, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+
+    <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "Weather forecast",
+        "logo": "images/logo.png"
+    }</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+</head>
+<body class="u-body u-xl-mode" data-lang="en">
+<header class="u-clearfix u-header u-valign-middle-xl u-white u-header" id="sec-678a">
+    <div class="u-container-style u-expanded-width-xl u-group u-shape-rectangle u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+            <p class="u-text u-text-body-color u-text-1">Weather forecast by Fullerite_</p>
+            <a href="{{ url_for('index') }}" class="u-image u-logo u-image-1" data-image-width="512"
+               data-image-height="512">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" class="u-logo-image u-logo-image-1">
+            </a>
+            <nav class="u-align-right u-menu u-menu-one-level u-offcanvas u-menu-1">
+                <div class="menu-collapse" style="font-size: 1.25rem; letter-spacing: 0px; font-weight: 400;">
+                    <a class="u-button-style u-custom-border-radius u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                       href="#">
+                        <svg class="u-svg-link" viewBox="0 0 24 24">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+                        </svg>
+                        <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <rect y="1" width="16" height="2"></rect>
+                                <rect y="7" width="16" height="2"></rect>
+                                <rect y="13" width="16" height="2"></rect>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+<section class="u-clearfix u-section-1" id="sec-cc34">
+    <div class="u-container-style u-expanded-width u-group u-image u-shape-rectangle u-image-1" data-image-width="1680"
+         data-image-height="1050">
+        <div class="u-container-layout u-container-layout-1">
+            <div class="u-form u-form-1">
+                <form action="{{ url_for('index') }}" method="get" class="u-clearfix u-form-horizontal u-form-spacing-26 u-inner-form" style="padding: 15px" source="custom" name="form">
+                    <div class="u-form-group u-form-name u-label-none">
+                        <input type="text" placeholder="Enter city name:" id="name-558c" name="city"
+                               class="u-border-1 u-border-black u-input u-input-rectangle u-radius-30 u-input-1"
+                               required="required" autofocus="autofocus">
+                    </div>
+                    <div class="u-form-group u-form-submit u-label-none">
+                        <input type="submit" value="Submit" class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1">
+                    </div>
+                </form>
+            </div>
+            <div data-interval="0" data-u-ride="false"
+                 class="u-border-2 u-border-grey-75 u-carousel u-carousel-duration-250 u-slider u-slider-1"
+                 id="carousel-733d">
+                <ol class="u-carousel-indicators u-carousel-indicators-1">
+                    <li data-u-target="#carousel-733d" class="u-active u-active-grey-40 u-black u-shape-rectangle"
+                        data-u-slide-to="0" style="width: 23px; height: 4px;"></li>
+                    <li data-u-target="#carousel-733d" class="u-active-grey-40 u-black u-shape-rectangle"
+                        data-u-slide-to="1" style="width: 23px; height: 4px;"></li>
+                    <li data-u-target="#carousel-733d" class="u-active-grey-40 u-black u-shape-rectangle"
+                        data-u-slide-to="2" style="width: 23px; height: 4px;"></li>
+                    <li data-u-target="#carousel-733d" class="u-active-grey-40 u-black u-shape-rectangle"
+                        data-u-slide-to="3" style="width: 23px; height: 4px;"></li>
+                    <li data-u-target="#carousel-733d" class="u-active-grey-40 u-black u-shape-rectangle"
+                        data-u-slide-to="4" style="width: 23px; height: 4px;"></li>
+                    <li data-u-target="#carousel-733d" class="u-active-grey-40 u-black u-shape-rectangle"
+                        data-u-slide-to="5" style="width: 23px; height: 4px;"></li>
+                    <li data-u-target="#carousel-733d" class="u-active-grey-40 u-black u-shape-rectangle"
+                        data-u-slide-to="6" style="width: 23px; height: 4px;"></li>
+                    <li data-u-target="#carousel-733d" class="u-active-grey-40 u-black u-shape-rectangle"
+                        data-u-slide-to="7" style="width: 23px; height: 4px;"></li>
+                </ol>
+<!--1st slide-->
+                <div class="u-carousel-inner" role="listbox">
+                    <div class="u-active u-carousel-item u-container-style u-slide u-carousel-item-1">
+                        <div class="u-container-layout u-container-layout-2">
+                            <div class="u-container-style u-group u-shape-rectangle u-group-2">
+                                <div class="u-container-layout u-container-layout-3">
+                                    <h3 class="u-text u-text-1">{{ weather['list'][0]['dt_txt'] }}</h3>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-3">
+                                        <div class="u-container-layout">
+                                            <div class="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-1"></div>
+                                            <p class="u-text u-text-2">{{ weather['list'][0]['main']['temp']|round|int }} °C</p>
+                                            <p class="u-text u-text-default u-text-3">Feels like {{ weather['list'][0]['main']['feels_like']|round|int }} °C</p>
+                                            {% if weather['list'][0]['dt_txt'][:10] == dates_unique[0] %}
+                                            <p class="u-text u-text-4">{{ sun_time[0]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-5">{{ sun_time[0]['results']['sunrise'] }}</p>
+                                            {% else %}
+                                            <p class="u-text u-text-4">{{ sun_time[1]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-5">{{ sun_time[1]['results']['sunrise'] }}</p>
+                                            {% endif %}
+                                            <span class="u-file-icon u-icon u-icon-1"><img src="{{ url_for('static', filename='images/sunrise.png') }}" alt=""></span>
+                                            <span class="u-file-icon u-icon u-icon-2"><img src="{{ url_for('static', filename='images/sunset.png') }}" alt=""></span>
+                                            <img class="u-image u-image-default u-preserve-proportions u-image-2"
+                                                 src="http://openweathermap.org/img/wn/{{ weather['list'][0]['weather'][0]['icon'] }}.png" alt=""
+                                                 data-image-width="83" data-image-height="83">
+                                        </div>
+                                    </div>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-4">
+                                        <div class="u-container-layout u-container-layout-5">
+                                            <h5 class="u-text u-text-default u-text-6">Visibility</h5>
+                                            <h5 class="u-text u-text-default u-text-7">Humidity</h5>
+                                            <h5 class="u-text u-text-default u-text-8">Pressure</h5>
+                                            <h5 class="u-text u-text-default u-text-9">Wind</h5>
+                                            <h5 class="u-text u-text-default u-text-10">Description</h5>
+                                            <p class="u-text u-text-default u-text-11">{{ weather['list'][0]['weather'][0]['description'].capitalize() }}</p>
+                                            <p class="u-text u-text-12">{{ weather['list'][0]['wind']['speed']|round|int }} m/s</p>
+                                            <p class="u-text u-text-default u-text-13">{{ (weather['list'][0]['main']['pressure']*0.75)|round|int }} mmHg</p>
+                                            <p class="u-text u-text-default u-text-14">{{ weather['list'][0]['main']['humidity'] }}%</p>
+                                            <p class="u-text u-text-default u-text-15">{{ weather['list'][0]['visibility'] }} m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--2nd slide-->
+                    <div class="u-carousel-item u-container-style u-slide u-carousel-item-2">
+                        <div class="u-container-layout u-container-layout-6">
+                            <div class="u-container-style u-group u-shape-rectangle u-group-5">
+                                <div class="u-container-layout u-container-layout-7">
+                                    <h3 class="u-text u-text-16">{{ weather['list'][1]['dt_txt'] }}</h3>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-6">
+                                        <div class="u-container-layout">
+                                            <div class="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-2"></div>
+                                            <p class="u-text u-text-17">{{ weather['list'][1]['main']['temp']|round|int }} °C</p>
+                                            <p class="u-text u-text-default u-text-18">Feels like {{ weather['list'][1]['main']['feels_like']|round|int }} °C</p>
+                                            {% if weather['list'][1]['dt_txt'][:10] == dates_unique[0] %}
+                                            <p class="u-text u-text-19">{{ sun_time[0]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-20">{{ sun_time[0]['results']['sunrise'] }}</p>
+                                            {% else %}
+                                            <p class="u-text u-text-19">{{ sun_time[1]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-20">{{ sun_time[1]['results']['sunrise'] }}</p>
+                                            {% endif %}
+                                            <span class="u-file-icon u-icon u-icon-3"><img src="{{ url_for('static', filename='images/sunset.png') }}" alt=""></span>
+                                            <span class="u-file-icon u-icon u-icon-4"><img src="{{ url_for('static', filename='images/sunrise.png') }}" alt=""></span>
+                                            <img class="u-image u-image-default u-preserve-proportions u-image-3"
+                                                 src="http://openweathermap.org/img/wn/{{ weather['list'][1]['weather'][0]['icon'] }}.png" alt=""
+                                                 data-image-width="83" data-image-height="83">
+                                        </div>
+                                    </div>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-7">
+                                        <div class="u-container-layout u-container-layout-9">
+                                            <h5 class="u-text u-text-default u-text-21">Visibility</h5>
+                                            <h5 class="u-text u-text-default u-text-22">Humidity</h5>
+                                            <h5 class="u-text u-text-default u-text-23">Pressure</h5>
+                                            <h5 class="u-text u-text-default u-text-24">Wind</h5>
+                                            <h5 class="u-text u-text-default u-text-25">Description</h5>
+                                            <p class="u-align-center u-text u-text-default u-text-26">{{ weather['list'][1]['weather'][0]['description'].capitalize() }}</p>
+                                            <p class="u-align-center u-text u-text-27">{{ weather['list'][1]['wind']['speed']|round|int }} m/s</p>
+                                            <p class="u-align-center u-text u-text-default u-text-28">{{ (weather['list'][1]['main']['pressure']*0.75)|round|int }} mmHg</p>
+                                            <p class="u-align-center u-text u-text-default u-text-29">{{ weather['list'][1]['main']['humidity'] }}%</p>
+                                            <p class="u-align-center u-text u-text-default u-text-30">{{ weather['list'][1]['visibility'] }} m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--3rd slide-->
+                    <div class="u-carousel-item u-container-style u-slide u-carousel-item-3">
+                        <div class="u-container-layout u-container-layout-10">
+                            <div class="u-container-style u-group u-shape-rectangle u-group-8">
+                                <div class="u-container-layout u-container-layout-11">
+                                    <h3 class="u-text u-text-31">{{ weather['list'][2]['dt_txt'] }}</h3>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-9">
+                                        <div class="u-container-layout">
+                                            <div class="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-3"></div>
+                                            <p class="u-text u-text-32">{{ weather['list'][2]['main']['temp']|round|int }} °C</p>
+                                            <p class="u-text u-text-default u-text-33">Feels like {{ weather['list'][2]['main']['feels_like']|round|int }} °C</p>
+                                            {% if weather['list'][2]['dt_txt'][:10] == dates_unique[0] %}
+                                            <p class="u-text u-text-34">{{ sun_time[0]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-35">{{ sun_time[0]['results']['sunrise'] }}</p>
+                                            {% else %}
+                                            <p class="u-text u-text-34">{{ sun_time[1]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-35">{{ sun_time[1]['results']['sunrise'] }}</p>
+                                            {% endif %}
+                                            <span class="u-file-icon u-icon u-icon-5"><img src="{{ url_for('static', filename='images/sunset.png') }}" alt=""></span>
+                                            <span class="u-file-icon u-icon u-icon-6"><img src="{{ url_for('static', filename='images/sunrise.png') }}" alt=""></span>
+                                            <img class="u-image u-image-default u-preserve-proportions u-image-4"
+                                                 src="http://openweathermap.org/img/wn/{{ weather['list'][2]['weather'][0]['icon'] }}.png" alt=""
+                                                 data-image-width="83" data-image-height="83">
+                                        </div>
+                                    </div>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-10">
+                                        <div class="u-container-layout u-container-layout-13">
+                                            <h5 class="u-text u-text-default u-text-36">Visibility</h5>
+                                            <h5 class="u-text u-text-default u-text-37">Humidity</h5>
+                                            <h5 class="u-text u-text-default u-text-38">Pressure</h5>
+                                            <h5 class="u-text u-text-default u-text-39">Wind</h5>
+                                            <h5 class="u-text u-text-default u-text-40">Description</h5>
+                                            <p class="u-align-center u-text u-text-default u-text-41">{{ weather['list'][2]['weather'][0]['description'].capitalize() }}</p>
+                                            <p class="u-align-center u-text u-text-42">{{ weather['list'][2]['wind']['speed']|round|int }} m/s</p>
+                                            <p class="u-align-center u-text u-text-default u-text-43">{{ (weather['list'][2]['main']['pressure']*0.75)|round|int }} mmHg</p>
+                                            <p class="u-align-center u-text u-text-default u-text-44">{{ weather['list'][2]['main']['humidity'] }}%</p>
+                                            <p class="u-align-center u-text u-text-default u-text-45">{{ weather['list'][2]['visibility'] }} m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--4th slide-->
+                    <div class="u-carousel-item u-container-style u-slide u-carousel-item-4">
+                        <div class="u-container-layout u-container-layout-14">
+                            <div class="u-container-style u-group u-shape-rectangle u-group-11">
+                                <div class="u-container-layout u-container-layout-15">
+                                    <h3 class="u-text u-text-46">{{ weather['list'][3]['dt_txt'] }}</h3>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-12">
+                                        <div class="u-container-layout">
+                                            <div class="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-4"></div>
+                                            <p class="u-text u-text-47">{{ weather['list'][3]['main']['temp']|round|int }} °C</p>
+                                            <p class="u-text u-text-default u-text-48">Feels like {{ weather['list'][3]['main']['feels_like']|round|int }} °C</p>
+                                            {% if weather['list'][3]['dt_txt'][:10] == dates_unique[0] %}
+                                            <p class="u-text u-text-49">{{ sun_time[0]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-50">{{ sun_time[0]['results']['sunrise'] }}</p>
+                                            {% else %}
+                                            <p class="u-text u-text-49">{{ sun_time[1]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-50">{{ sun_time[1]['results']['sunrise'] }}</p>
+                                            {% endif %}
+                                            <span class="u-file-icon u-icon u-icon-7"><img src="{{ url_for('static', filename='images/sunset.png') }}" alt=""></span>
+                                            <span class="u-file-icon u-icon u-icon-8"><img src="{{ url_for('static', filename='images/sunrise.png') }}" alt=""></span>
+                                            <img class="u-image u-image-default u-preserve-proportions u-image-5"
+                                                 src="http://openweathermap.org/img/wn/{{ weather['list'][3]['weather'][0]['icon'] }}.png" alt=""
+                                                 data-image-width="83" data-image-height="83">
+                                        </div>
+                                    </div>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-13">
+                                        <div class="u-container-layout u-container-layout-17">
+                                            <h5 class="u-text u-text-default u-text-51">Visibility</h5>
+                                            <h5 class="u-text u-text-default u-text-52">Humidity</h5>
+                                            <h5 class="u-text u-text-default u-text-53">Pressure</h5>
+                                            <h5 class="u-text u-text-default u-text-54">Wind</h5>
+                                            <h5 class="u-text u-text-default u-text-55">Description</h5>
+                                            <p class="u-align-center u-text u-text-default u-text-56">{{ weather['list'][3]['weather'][0]['description'].capitalize() }}</p>
+                                            <p class="u-align-center u-text u-text-57">{{ weather['list'][3]['wind']['speed']|round|int }} m/s</p>
+                                            <p class="u-align-center u-text u-text-default u-text-58">{{ (weather['list'][3]['main']['pressure']*0.75)|round|int }} mmHg</p>
+                                            <p class="u-align-center u-text u-text-default u-text-59">{{ weather['list'][3]['main']['humidity'] }}%</p>
+                                            <p class="u-align-center u-text u-text-default u-text-60">{{ weather['list'][3]['visibility'] }} m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--5th slide-->
+                    <div class="u-carousel-item u-container-style u-slide u-carousel-item-5">
+                        <div class="u-container-layout u-container-layout-18">
+                            <div class="u-container-style u-group u-shape-rectangle u-group-14">
+                                <div class="u-container-layout u-container-layout-19">
+                                    <h3 class="u-text u-text-61">{{ weather['list'][4]['dt_txt'] }}</h3>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-15">
+                                        <div class="u-container-layout">
+                                            <div class="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-5"></div>
+                                            <p class="u-text u-text-62">{{ weather['list'][4]['main']['temp']|round|int }} °C</p>
+                                            <p class="u-text u-text-default u-text-63">Feels like {{ weather['list'][4]['main']['feels_like']|round|int }} °C</p>
+                                            {% if weather['list'][4]['dt_txt'][:10] == dates_unique[0] %}
+                                            <p class="u-text u-text-64">{{ sun_time[0]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-65">{{ sun_time[0]['results']['sunrise'] }}</p>
+                                            {% else %}
+                                            <p class="u-text u-text-64">{{ sun_time[1]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-65">{{ sun_time[1]['results']['sunrise'] }}</p>
+                                            {% endif %}
+                                            <span class="u-file-icon u-icon u-icon-9"><img src="{{ url_for('static', filename='images/sunset.png') }}" alt=""></span>
+                                            <span class="u-file-icon u-icon u-icon-10"><img src="{{ url_for('static', filename='images/sunrise.png') }}" alt=""></span>
+                                            <img class="u-image u-image-default u-preserve-proportions u-image-6"
+                                                 src="http://openweathermap.org/img/wn/{{ weather['list'][4]['weather'][0]['icon'] }}.png" alt=""
+                                                 data-image-width="83" data-image-height="83">
+                                        </div>
+                                    </div>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-16">
+                                        <div class="u-container-layout u-container-layout-21">
+                                            <h5 class="u-text u-text-default u-text-66">Visibility</h5>
+                                            <h5 class="u-text u-text-default u-text-67">Humidity</h5>
+                                            <h5 class="u-text u-text-default u-text-68">Pressure</h5>
+                                            <h5 class="u-text u-text-default u-text-69">Wind</h5>
+                                            <h5 class="u-text u-text-default u-text-70">Description</h5>
+                                            <p class="u-align-center u-text u-text-default u-text-71">{{ weather['list'][4]['weather'][0]['description'].capitalize() }}</p>
+                                            <p class="u-align-center u-text u-text-72">{{ weather['list'][4]['wind']['speed']|round|int }} m/s</p>
+                                            <p class="u-align-center u-text u-text-default u-text-73">{{ (weather['list'][4]['main']['pressure']*0.75)|round|int }} mmHg</p>
+                                            <p class="u-align-center u-text u-text-default u-text-74">{{ weather['list'][4]['main']['humidity'] }}%</p>
+                                            <p class="u-align-center u-text u-text-default u-text-75">{{ weather['list'][4]['visibility'] }} m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--6th slide-->
+                    <div class="u-carousel-item u-container-style u-slide u-carousel-item-6">
+                        <div class="u-container-layout u-container-layout-22">
+                            <div class="u-container-style u-group u-shape-rectangle u-group-17">
+                                <div class="u-container-layout u-container-layout-23">
+                                    <h3 class="u-text u-text-76">{{ weather['list'][5]['dt_txt'] }}</h3>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-18">
+                                        <div class="u-container-layout">
+                                            <div class="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-6"></div>
+                                            <p class="u-text u-text-77">{{ weather['list'][5]['main']['temp']|round|int }} °C</p>
+                                            <p class="u-text u-text-default u-text-78">Feels like {{ weather['list'][5]['main']['feels_like']|round|int }} °C</p>
+                                            {% if weather['list'][5]['dt_txt'][:10] == dates_unique[0] %}
+                                            <p class="u-text u-text-79">{{ sun_time[0]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-80">{{ sun_time[0]['results']['sunrise'] }}</p>
+                                            {% else %}
+                                            <p class="u-text u-text-79">{{ sun_time[1]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-80">{{ sun_time[1]['results']['sunrise'] }}</p>
+                                            {% endif %}
+                                            <span class="u-file-icon u-icon u-icon-11"><img src="{{ url_for('static', filename='images/sunset.png') }}" alt=""></span>
+                                            <span class="u-file-icon u-icon u-icon-12"><img src="{{ url_for('static', filename='images/sunrise.png') }}" alt=""></span>
+                                            <img class="u-image u-image-default u-preserve-proportions u-image-7"
+                                                 src="http://openweathermap.org/img/wn/{{ weather['list'][5]['weather'][0]['icon'] }}.png" alt=""
+                                                 data-image-width="83" data-image-height="83">
+                                        </div>
+                                    </div>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-19">
+                                        <div class="u-container-layout u-container-layout-25">
+                                            <h5 class="u-text u-text-default u-text-81">Visibility</h5>
+                                            <h5 class="u-text u-text-default u-text-82">Humidity</h5>
+                                            <h5 class="u-text u-text-default u-text-83">Pressure</h5>
+                                            <h5 class="u-text u-text-default u-text-84">Wind</h5>
+                                            <h5 class="u-text u-text-default u-text-85">Description</h5>
+                                            <p class="u-align-center u-text u-text-default u-text-86">{{ weather['list'][5]['weather'][0]['description'].capitalize() }}</p>
+                                            <p class="u-align-center u-text u-text-87">{{ weather['list'][5]['wind']['speed']|round|int }} m/s </p>
+                                            <p class="u-align-center u-text u-text-default u-text-88">{{ (weather['list'][5]['main']['pressure']*0.75)|round|int }} mmHg</p>
+                                            <p class="u-align-center u-text u-text-default u-text-89">{{ weather['list'][5]['main']['humidity'] }}%</p>
+                                            <p class="u-align-center u-text u-text-default u-text-90">{{ weather['list'][5]['visibility'] }} m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--7th slide-->
+                    <div class="u-carousel-item u-container-style u-slide u-carousel-item-7">
+                        <div class="u-container-layout u-container-layout-26">
+                            <div class="u-container-style u-group u-shape-rectangle u-group-20">
+                                <div class="u-container-layout u-container-layout-27">
+                                    <h3 class="u-text u-text-91">{{ weather['list'][6]['dt_txt'] }}</h3>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-21">
+                                        <div class="u-container-layout">
+                                            <div class="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-7"></div>
+                                            <p class="u-text u-text-92">{{ weather['list'][6]['main']['temp']|round|int }} °C</p>
+                                            <p class="u-text u-text-default u-text-93">Feels like {{ weather['list'][6]['main']['feels_like']|round|int }} °C</p>
+                                            {% if weather['list'][6]['dt_txt'][:10] == dates_unique[0] %}
+                                            <p class="u-text u-text-94">{{ sun_time[0]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-95">{{ sun_time[0]['results']['sunrise'] }}</p>
+                                            {% else %}
+                                            <p class="u-text u-text-94">{{ sun_time[1]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-95">{{ sun_time[1]['results']['sunrise'] }}</p>
+                                            {% endif %}
+                                            <span class="u-file-icon u-icon u-icon-13"><img src="{{ url_for('static', filename='images/sunset.png') }}" alt=""></span>
+                                            <span class="u-file-icon u-icon u-icon-14"><img src="{{ url_for('static', filename='images/sunrise.png') }}" alt=""></span>
+                                            <img class="u-image u-image-default u-preserve-proportions u-image-8"
+                                                 src="http://openweathermap.org/img/wn/{{ weather['list'][6]['weather'][0]['icon'] }}.png" alt=""
+                                                 data-image-width="83" data-image-height="83">
+                                        </div>
+                                    </div>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-22">
+                                        <div class="u-container-layout u-container-layout-29">
+                                            <h5 class="u-text u-text-default u-text-96">Visibility</h5>
+                                            <h5 class="u-text u-text-default u-text-97">Humidity</h5>
+                                            <h5 class="u-text u-text-default u-text-98">Pressure</h5>
+                                            <h5 class="u-text u-text-default u-text-99">Wind</h5>
+                                            <h5 class="u-text u-text-default u-text-100">Description</h5>
+                                            <p class="u-align-center u-text u-text-default u-text-101">{{ weather['list'][6]['weather'][0]['description'].capitalize() }}</p>
+                                            <p class="u-align-center u-text u-text-102">{{ weather['list'][6]['wind']['speed']|round|int }} m/s</p>
+                                            <p class="u-align-center u-text u-text-default u-text-103">{{ (weather['list'][6]['main']['pressure']*0.75)|round|int }} mmHg</p>
+                                            <p class="u-align-center u-text u-text-default u-text-104">{{ weather['list'][6]['main']['humidity'] }}%</p>
+                                            <p class="u-align-center u-text u-text-default u-text-105">{{ weather['list'][6]['visibility'] }} m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--8th slide-->
+                    <div class="u-carousel-item u-container-style u-slide u-carousel-item-8">
+                        <div class="u-container-layout u-container-layout-30">
+                            <div class="u-container-style u-group u-shape-rectangle u-group-23">
+                                <div class="u-container-layout u-container-layout-31">
+                                    <h3 class="u-text u-text-106">{{ weather['list'][7]['dt_txt'] }}</h3>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-24">
+                                        <div class="u-container-layout">
+                                            <div class="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-8"></div>
+                                            <p class="u-text u-text-107">{{ weather['list'][7]['main']['temp']|round|int }} °C</p>
+                                            <p class="u-text u-text-default u-text-108">Feels like {{ weather['list'][7]['main']['feels_like']|round|int }} °C</p>
+                                            {% if weather['list'][7]['dt_txt'][:10] == dates_unique[0] %}
+                                            <p class="u-text u-text-109">{{ sun_time[0]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-110">{{ sun_time[0]['results']['sunrise'] }}</p>
+                                            {% else %}
+                                            <p class="u-text u-text-109">{{ sun_time[1]['results']['sunset'] }}</p>
+                                            <p class="u-text u-text-110">{{ sun_time[1]['results']['sunrise'] }}</p>
+                                            {% endif %}
+                                            <span class="u-file-icon u-icon u-icon-15"><img src="{{ url_for('static', filename='images/sunset.png') }}" alt=""></span>
+                                            <span class="u-file-icon u-icon u-icon-16"><img src="{{ url_for('static', filename='images/sunrise.png') }}" alt=""></span>
+                                            <img class="u-image u-image-default u-preserve-proportions u-image-9"
+                                                 src="http://openweathermap.org/img/wn/{{ weather['list'][7]['weather'][0]['icon'] }}.png" alt=""
+                                                 data-image-width="83" data-image-height="83">
+                                        </div>
+                                    </div>
+                                    <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-25">
+                                        <div class="u-container-layout u-container-layout-33">
+                                            <h5 class="u-text u-text-default u-text-111">Visibility</h5>
+                                            <h5 class="u-text u-text-default u-text-112">Humidity</h5>
+                                            <h5 class="u-text u-text-default u-text-113">Pressure</h5>
+                                            <h5 class="u-text u-text-default u-text-114">Wind</h5>
+                                            <h5 class="u-text u-text-default u-text-115">Description</h5>
+                                            <p class="u-align-center u-text u-text-default u-text-116">{{ weather['list'][7]['weather'][0]['description'].capitalize() }}</p>
+                                            <p class="u-align-center u-text u-text-117">{{ weather['list'][7]['wind']['speed']|round|int }} m/s</p>
+                                            <p class="u-align-center u-text u-text-default u-text-118">{{ (weather['list'][7]['main']['pressure']*0.75)|round|int }} mmHg</p>
+                                            <p class="u-align-center u-text u-text-default u-text-119">{{ weather['list'][7]['main']['humidity'] }}%</p>
+                                            <p class="u-align-center u-text u-text-default u-text-120">{{ weather['list'][7]['visibility'] }} m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-spacing-5 u-text-grey-90 u-carousel-control-1"
+                   href="#carousel-733d" role="button" data-u-slide="prev">
+                    <span aria-hidden="true">
+                        <svg viewBox="0 0 477.175 477.175">
+                            <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"></path>
+                        </svg>
+                    </span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-spacing-5 u-text-grey-90 u-carousel-control-2"
+                   href="#carousel-733d" role="button" data-u-slide="next">
+                    <span aria-hidden="true">
+                        <svg viewBox="0 0 477.175 477.175">
+                            <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"></path>
+                        </svg>
+                    </span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-e310">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-align-center u-small-text u-text u-text-variant u-text-1">Thanks for visiting my website</p>
+    </div>
+</footer>
+</body>
+</html>
