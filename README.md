@@ -9,5 +9,5 @@ Tools used:
 - OpenWeatherMap API
 - SunriseSunset API
 
-![Default page screenshot](preview/demo-default.png)
-![Forecast page screenshot](preview/demo.png)
+![Default page screenshot](https://ie.wampi.ru/2023/03/04/demo-default.png)
+![Forecast page screenshot](https://ic.wampi.ru/2023/03/04/demo.png)
