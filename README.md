@@ -1,7 +1,7 @@
 
 # Weather forecast
 
-Web app that shows 24 hour(starting from request time) forecast with all needed information about 
+Web app that shows 24 hour(starting from request time) forecast 
 
 Tools used:
 - Flask
